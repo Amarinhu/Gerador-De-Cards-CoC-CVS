@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerador de Cards de Poderes / Feitiços / Rituais</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="page-container">
+        <header class="page-header">
+            <h1>Gerador de Cards - Codex Verus Seraph</h1>
+            <p>Preencha os campos abaixo e clique em “Gerar código” para obter o HTML com classes.</p>
+        </header>
+
+        <section class="form-section">
+            <form id="card-form" class="card-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tipo">Tipo</label>
+                        <select id="tipo" name="tipo">
+                            <option value="Feitiço">Feitiço</option>
+                            <option value="Poder">Poder</option>
+                            <option value="Ritual">Ritual</option>
+                            <option value="">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group form-group--wide">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" placeholder="Sussuro Sombrio de Fabianus" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="icone">Caminho da imagem (ícone)</label>
+                        <input type="text" id="icone" name="icone" placeholder="Codex_Verus_Seraph/Icones/poder-generico.png" value="Codex_Verus_Seraph/Icones/poder-generico.png">
+                    </div>
+                    <div class="form-group">
+                        <label for="alt">Texto alternativo da imagem</label>
+                        <input type="text" id="alt" name="alt" placeholder="Ex: Visão Remota de Rubens" value="poder-generico">
+                    </div>
+                </div>
+
+                <fieldset class="fieldset">
+                    <legend>Custo</legend>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="custo-pm">PM</label>
+                            <input type="text" id="custo-pm" name="custo-pm" placeholder="Ex: 5">
+                        </div>
+                        <div class="form-group">
+                            <label for="custo-san">SAN</label>
+                            <input type="text" id="custo-san" name="custo-san" placeholder="Ex: 1d4">
+                        </div>
+                        <div class="form-group">
+                            <label for="custo-pod">POD</label>
+                            <input type="text" id="custo-pod" name="custo-pod" placeholder="Ex: 1">
+                        </div>
+                        <div class="form-group form-group--wide">
+                            <label for="custo-outros">Outros</label>
+                            <input type="text" id="custo-outros" name="custo-outros" placeholder="Ex: 1 Ponto de Vida; 1 item raro">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="fieldset">
+                    <legend>Tempo de conjuração</legend>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tempo-valor">Valor</label>
+                            <input type="text" id="tempo-valor" name="tempo-valor" placeholder="Ex: 1, 3, 10">
+                        </div>
+                        <div class="form-group">
+                            <label for="tempo-unidade">Unidade</label>
+                            <select id="tempo-unidade" name="tempo-unidade">
+                                <option value="Instantâneo">Instantâneo</option>
+                                <option value="rodada(s)">Rodada</option>
+                                <option value="minuto(s)">Minutos</option>
+                                <option value="hora(s)">Horas</option>
+                                <option value="dia(s)">Dias</option>
+                                <option value="semana(s)">Semanas</option>
+                                <option value="mese(s)">Meses</option>
+                                <option value="">Especial</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <textarea id="descricao" name="descricao" rows="5" placeholder="Descrição do efeito, mecânica, falhas, etc."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Gerar código</button>
+                    <button type="button" id="btn-limpar" class="btn-secondary">Limpar campos</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="output-section">
+            <div class="output-columns">
+                <div class="preview-column">
+                    <h2>Preview</h2>
+                    <div id="preview-container" class="preview-container">
+                    </div>
+                </div>
+
+                <div class="code-column">
+                    <h2>Código HTML gerado</h2>
+                    <p class="helper-text">Copie o código abaixo e cole no seu documento:</p>
+                    <textarea id="codigo-gerado" class="code-output" readonly></textarea>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
